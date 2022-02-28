@@ -130,12 +130,6 @@ double summNdowhile(int n)
 ```c++
 #pragma once
 
-double summNfor(int);
-
-double summNwhile(int);
-
-double summNdowhile(int);
-
 double summEpsfor(double);
 
 double summEpswhile(double);
@@ -153,22 +147,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int n;
 	double eps;
-
-	cout << "Задание №1" << endl << endl;
-
-	cout << "Введите количество итераций: ";
-	cin >> n;
-
-	cout << endl << "Вычисление значения суммы ряда (for): "
-		<< summNfor(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (while): "
-		<< summNwhile(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (do...while): "
-		<< summNdowhile(n) << endl << endl;
 
 	cout << "Задание №2" << endl << endl;
 
@@ -189,52 +168,6 @@ int main()
 *OperFunc.cpp*:
 ```c++
 #include <cmath>
-
-// Вычисление регулярного цикла (цикл for)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNfor(int n)
-{
-	double S = 0;
-	for (int i = 0; i < n; i++)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNwhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	while (i < n)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл do...while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNdowhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	do
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (i < n);
-	return S;
-}
 
 // Вычисление итерационного цикла с точчностью eps (цикл for)
 // @ {double} eps - точность расчёта ряда
@@ -291,26 +224,15 @@ double summEpsdowhile(double eps)
 
 ## Задание 3
 
-Написать функцию для вычисления выражения ∑∞ 𝑎𝑖 с точностью 𝜀.
-Функция в качестве параметра принимает значение 𝜀 и вычисляет сумму до тех пор, пока не выполнится условие |𝑎𝑖| ≤ 𝜀.
-Прототип функции double summ2(double eps).
-Функция не должна использовать функции консольного ввода-вывода.
+Написать функцию, которая печатает 𝑛 членов последовательности {𝑎𝑖}, исключая из неё каждый 𝑘-ый член.
+Числа	𝑛	и	𝑘	передаются	в	функцию	в	качестве	параметра.	
+Для	исключения	члена последовательности используйте оператор continue.
+Прототип функции void print(int n, int k).
+Пример вывода: 1.2 1.3 0.75
 
 *Header.h*:
 ```c++
 #pragma once
-
-double summNfor(int);
-
-double summNwhile(int);
-
-double summNdowhile(int);
-
-double summEpsfor(double);
-
-double summEpswhile(double);
-
-double summEpsdowhile(double);
 
 void printFor(int, int);
 
@@ -330,35 +252,6 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	int n, k;
-	double eps;
-
-	cout << "Задание №1" << endl << endl;
-
-	cout << "Введите количество итераций: ";
-	cin >> n;
-
-	cout << endl << "Вычисление значения суммы ряда (for): "
-		<< summNfor(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (while): "
-		<< summNwhile(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (do...while): "
-		<< summNdowhile(n) << endl << endl;
-
-	cout << "Задание №2" << endl << endl;
-
-	cout << "Введите точность: ";
-	cin >> eps;
-
-	cout << endl << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (for) = " << summEpsfor(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (while) = " << summEpswhile(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (do...while) = " << summEpsdowhile(eps) << endl << endl;
 
 	cout << "Задание №3" << endl << endl;
 
@@ -380,104 +273,6 @@ int main()
 ```c++
 #include <cmath>
 #include <stdio.h>
-
-// Вычисление регулярного цикла (цикл for)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNfor(int n)
-{
-	double S = 0;
-	for (int i = 0; i < n; i++)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNwhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	while (i < n)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл do...while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNdowhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	do
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (i < n);
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл for)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsfor(double eps)
-{
-	double a = -1;
-	double S = a;
-	for (int i = 2; abs(a) > eps; i++)
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpswhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	while( abs(a) > eps )
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл do...while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsdowhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	do
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (abs(a) > eps);
-
-	return S;
-}
 
 // Функция вывода членов последовательности исключая k член (for)
 void printFor(int n, int k)
@@ -537,24 +332,6 @@ void printDowhile(int n, int k)
 ```c++
 #pragma once
 
-double summNfor(int);
-
-double summNwhile(int);
-
-double summNdowhile(int);
-
-double summEpsfor(double);
-
-double summEpswhile(double);
-
-double summEpsdowhile(double);
-
-void printFor(int, int);
-
-void printWhile(int, int);
-
-void printDowhile(int, int);
-
 int findFirstElementFor(double);
 
 int findFirstElementWhile(double);
@@ -572,50 +349,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int n, k;
 	double eps;
-
-	cout << "Задание №1" << endl << endl;
-
-	cout << "Введите количество итераций: ";
-	cin >> n;
-
-	cout << endl << "Вычисление значения суммы ряда (for): "
-		<< summNfor(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (while): "
-		<< summNwhile(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (do...while): "
-		<< summNdowhile(n) << endl << endl;
-
-	cout << "Задание №2" << endl << endl;
-
-	cout << "Введите точность: ";
-	cin >> eps;
-
-	cout << endl << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (for) = " << summEpsfor(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (while) = " << summEpswhile(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (do...while) = " << summEpsdowhile(eps) << endl << endl;
-
-	cout << "Задание №3" << endl << endl;
-
-	cout << "Введите n: ";
-	cin >> n;
-	cout << "Введите k: ";
-	cin >> k;
-
-	printFor(n, k);
-	cout << endl;
-	printWhile(n, k);
-	cout << endl;
-	printDowhile(n, k);
-	cout << endl << endl;
 
 	cout << "Задание №4" << endl << endl;
 
@@ -640,156 +374,6 @@ int main()
 ```c++
 #include <cmath>
 #include <stdio.h>
-
-// Вычисление регулярного цикла (цикл for)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNfor(int n)
-{
-	double S = 0;
-	for (int i = 0; i < n; i++)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNwhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	while (i < n)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл do...while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNdowhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	do
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (i < n);
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл for)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsfor(double eps)
-{
-	double a = -1;
-	double S = a;
-	for (int i = 2; abs(a) > eps; i++)
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpswhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	while( abs(a) > eps )
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл do...while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsdowhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	do
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (abs(a) > eps);
-
-	return S;
-}
-
-// Функция вывода членов последовательности исключая k член (for)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printFor(int n, int k)
-{
-	for (int i = 0; i < n; i++)
-	{
-		if (i == k)
-			continue;
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-	}
-}
-
-// Функция вывода членов последовательности исключая k член (while)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printWhile(int n, int k)
-{
-	int i = 0;
-	while ( i < n )
-	{
-		if (i == k)
-		{
-			i++;
-			continue;
-		}
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-		i++;
-	}
-}
-
-// Функция вывода членов последовательности исключая k член (do...while)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printDowhile(int n, int k)
-{
-	int i = 0;
-	do
-	{
-		if (i == k)
-		{
-			i++;
-			continue;
-		}
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-		i++;
-	} while (i < n);
-}
 
 // функция нахождения номера первого члена ряда
 // {double} eps - точность
@@ -866,30 +450,6 @@ int findFirstElementDowhile(double eps)
 ```c++
 #pragma once
 
-double summNfor(int);
-
-double summNwhile(int);
-
-double summNdowhile(int);
-
-double summEpsfor(double);
-
-double summEpswhile(double);
-
-double summEpsdowhile(double);
-
-void printFor(int, int);
-
-void printWhile(int, int);
-
-void printDowhile(int, int);
-
-int findFirstElementFor(double);
-
-int findFirstElementWhile(double);
-
-int findFirstElementDowhile(double);
-
 int findFirstNegativeElementFor(double);
 
 int findFirstNegativeElementWhile(double);
@@ -907,67 +467,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int n, k;
 	double eps;
-
-	cout << "Задание №1" << endl << endl;
-
-	cout << "Введите количество итераций: ";
-	cin >> n;
-
-	cout << endl << "Вычисление значения суммы ряда (for): "
-		<< summNfor(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (while): "
-		<< summNwhile(n) << endl;
-
-	cout << "Вычисление значения суммы ряда (do...while): "
-		<< summNdowhile(n) << endl << endl;
-
-	cout << "Задание №2" << endl << endl;
-
-	cout << "Введите точность: ";
-	cin >> eps;
-
-	cout << endl << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (for) = " << summEpsfor(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (while) = " << summEpswhile(eps) << endl;
-
-	cout << "Вычисление значения суммы ряда с точностью: "
-		<< eps << " (do...while) = " << summEpsdowhile(eps) << endl << endl;
-
-	cout << "Задание №3" << endl << endl;
-
-	cout << "Введите n: ";
-	cin >> n;
-	cout << "Введите k: ";
-	cin >> k;
-
-	printFor(n, k);
-	cout << endl;
-	printWhile(n, k);
-	cout << endl;
-	printDowhile(n, k);
-	cout << endl << endl;
-
-	cout << "Задание №4" << endl << endl;
-
-	cout << "Введите точность: ";
-	cin >> eps;
-
-	cout << "Номер первого члена последовательности, для которого "
-		<< "выполняется условие |ai| <= eps (for) " << findFirstElementFor(eps)
-		<< endl;
-
-	cout << "Номер первого члена последовательности, для которого "
-		<< "выполняется условие |ai| <= eps (while) " << findFirstElementWhile(eps)
-		<< endl;
-
-	cout << "Номер первого члена последовательности, для которого "
-		<< "выполняется условие |ai| <= eps (do...while) " << findFirstElementDowhile(eps)
-		<< endl;
 
 	cout << "Задание №5" << endl << endl;
 
@@ -992,220 +492,6 @@ int main()
 ```c++
 #include <cmath>
 #include <stdio.h>
-
-// Вычисление регулярного цикла (цикл for)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNfor(int n)
-{
-	double S = 0;
-	for (int i = 0; i < n; i++)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNwhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	while (i < n)
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-	return S;
-}
-
-// Вычисление регулярного цикла (цикл do...while)
-// @ {int} n - количество итераций
-// @ return {double}
-double summNdowhile(int n)
-{
-	double S = 0;
-	int i = 0;
-	do
-	{
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (i < n);
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл for)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsfor(double eps)
-{
-	double a = -1;
-	double S = a;
-	for (int i = 2; abs(a) > eps; i++)
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpswhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	while( abs(a) > eps )
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	}
-
-	return S;
-}
-
-// Вычисление итерационного цикла с точчностью eps (цикл do...while)
-// @ {double} eps - точность расчёта ряда
-// @ return {double}
-double summEpsdowhile(double eps)
-{
-	double a = -1;
-	double S = a;
-	int i = 2;
-	do
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		S += a;
-		i++;
-	} while (abs(a) > eps);
-
-	return S;
-}
-
-// Функция вывода членов последовательности исключая k член (for)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printFor(int n, int k)
-{
-	for (int i = 0; i < n; i++)
-	{
-		if (i == k)
-			continue;
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-	}
-}
-
-// Функция вывода членов последовательности исключая k член (while)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printWhile(int n, int k)
-{
-	int i = 0;
-	while ( i < n )
-	{
-		if (i == k)
-		{
-			i++;
-			continue;
-		}
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-		i++;
-	}
-}
-
-// Функция вывода членов последовательности исключая k член (do...while)
-// @ { int } n - количество элементов ряда
-// @ { int } k - элемент исключения
-void printDowhile(int n, int k)
-{
-	int i = 0;
-	do
-	{
-		if (i == k)
-		{
-			i++;
-			continue;
-		}
-		double a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		printf("%lf\t", a);
-		i++;
-	} while (i < n);
-}
-
-// функция нахождения номера первого члена ряда
-// {double} eps - точность
-// return {int} - номер члена ряда
-int findFirstElementFor(double eps)
-{
-	double a = -1;
-	int s;
-	for (int i = 2; abs(a) > eps; i++)
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		if (abs(a) > eps)
-		{
-			s = i;
-			break;
-		}
-	}
-
-	return s;
-}
-
-// функция нахождения номера первого члена ряда
-// {double} eps - точность
-// return {int} - номер члена ряда
-int findFirstElementWhile(double eps)
-{
-	double a = -1;
-	int s;
-	int i = 2;
-	while (abs(a) > eps)
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		if (abs(a) > eps)
-		{
-			s = i;
-			break;
-		}
-		i++;
-	}
-
-	return s;
-}
-
-// функция нахождения номера первого члена ряда
-// {double} eps - точность
-// return {int} - номер члена ряда
-int findFirstElementDowhile(double eps)
-{
-	double a = -1;
-	int s;
-	int i = 2;
-	do
-	{
-		a = (pow((-1), i) * (i - 1)) / (2 * pow(i, 2) + 1);
-		if (abs(a) > eps)
-		{
-			s = i;
-			break;
-		}
-		i++;
-	} while (abs(a) > eps);
-
-	return s;
-}
 
 // функция, возращающая номер первого отрицательного 
 // члена последовательности, для которого выполняется 

@@ -23,3 +23,6 @@ void sortStackArray(int*, int);
 
 // Функция работы с массивом заполняемым пользователем
 void sortArrayPerson();
+
+// Изменение размера массива
+void resizeArr(int*, int);

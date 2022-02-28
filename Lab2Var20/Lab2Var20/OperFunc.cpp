@@ -20,7 +20,5 @@ bool isInArea(double x, double y)
 // return {double}
 double f(double x)
 {
-	double res;
-	if (x <= 9 ? res = cos(2 * x) + 9 : res = cos(x) - x - 9);
-	return res;
+	return (x <= 9 ? cos(2 * x) + 9 : cos(x) - x - 9);
 }

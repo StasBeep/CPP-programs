@@ -151,3 +151,15 @@ void sortArrayPerson()
 	// освобождение пам€ти
 	delete arrayPer;
 }
+
+// »зменение размера массива
+void resizeArr(int* arr, int length)
+{
+	int* newArr = new int[length + 1];
+	for (int i = 0; i < length; i++)
+	{
+		*(newArr + i) == *(arr + i);
+	}
+	delete newArr;
+
+}

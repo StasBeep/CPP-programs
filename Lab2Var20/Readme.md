@@ -77,8 +77,6 @@ bool isInArea(double x, double y)
 ```c++
 #pragma once
 
-bool isInArea(double, double);
-
 double f(double);
 ```
 
@@ -92,21 +90,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	double x, y, result;
-	bool goal;
-
-	cout << "Задание 1" << endl << endl;
-
-	cout << "Введите х: ";
-	cin >> x;
-
-	cout << "Введите y: ";
-	cin >> y;
-
-	goal = isInArea(x, y);
-	
-	cout << endl;
-	cout << "Выстрел попал в цель? " << goal << endl << endl;
+	double x, result;
 	
 	cout << "Задание 2" << endl << endl;
 
@@ -123,20 +107,9 @@ int main()
 ```c++
 #include <cmath>
 
-bool isInArea(double x, double y)
-{
-	if (y <= -x + 1 && y >= 0 && x >= 0)
-		return 1;
-	if (x <= 0 && y <= 0 && x >= -1 && y >= -1)
-		return 1;
-	return 0;
-}
-
 double f(double x)
 {
-	double res;
-	if (x <= 9 ? res = cos(2 * x) + 9 : res = cos(x) - x - 9);
-	return res;
+	return (x <= 9 ? cos(2 * x) + 9 : cos(x) - x - 9);
 }
 ```
 
@@ -222,8 +195,6 @@ bool isInArea(double x, double y)
 
 double f(double x)
 {
-	double res;
-	if (x <= 9 ? res = cos(2 * x) + 9 : res = cos(x) - x - 9);
-	return res;
+	return (x <= 9 ? cos(2 * x) + 9 : cos(x) - x - 9);
 }
 ```

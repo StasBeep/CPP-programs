@@ -14,6 +14,7 @@ int main()
 	int n; // количество элементов массива
 	// массив для сортировки (6-7 задание)
 	int arrayRand[] = { -1, -9, 7, 2, 9, 1, -19, 10, 0, 2 };
+	int* arrAdd = new int[0]; // указатель на массив заполнения
 
 	do
 	{
@@ -67,12 +68,15 @@ int main()
 			cout << endl << "Введите количество элементов массива: ";
 			cin >> n;
 
-			int* arrAdd = new int[n]; // указатель на массив заполнения
+			// работает некорректно, проще работать с vector-массивом
+			resizeArr(arrAdd, n);
 
 			readArray(arrAdd, n);
 
 			// вывод массива из 4 задания
 			writeArray(arrAdd, n);
+
+			system("pause");
 
 			// освобождение памяти
 			delete arrAdd;
